@@ -1,5 +1,6 @@
 
-function ExpenseTrackerTable() {
+function ExpenseTrackerTable({expenses}) {
+    
     return (
         <table className="expense-table">
             <thead>
@@ -45,30 +46,16 @@ function ExpenseTrackerTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Milk</td>
-                    <td>Grocery</td>
-                    <td>₹40</td>
-                </tr>
-                <tr>
-                    <td>Shirt</td>
-                    <td>Clothes</td>
-                    <td>₹600</td>
-                </tr>
-                <tr>
-                    <td>Vegetables</td>
-                    <td>Grocery</td>
-                    <td>₹100</td>
-                </tr>
-                <tr>
-                    <td>Electricity Bill</td>
-                    <td>Bills</td>
-                    <td>₹1100</td>
-                </tr>
+                {expenses.map((expense) => (<tr key={expense.id}>
+                        <td>{expense.title}</td>
+                        <td>{expense.category}</td>
+                        <td>₹{expense.amount}</td>
+                    </tr>
+                ))}
                 <tr className="expense-summary">
                     <th>Total</th>
                     <th></th>
-                    <th>₹8100</th>
+                    <th>₹{expenses.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.amount), 0)}</th>
                 </tr>
             </tbody>
         </table>

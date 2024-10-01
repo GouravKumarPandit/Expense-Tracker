@@ -110,6 +110,19 @@ main {
     background-color: rgb(245,251,240);
 }
 
+.input-container select {
+    height: 35px;
+    font-family: inherit;
+    font-size: 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: rgb(245,251,240);
+    border: 2px solid black;
+}
+
 .add-btn {
     width: 100%;
     height: 35px;
@@ -117,7 +130,7 @@ main {
     font-family: inherit;
     margin-top: 8px;
     font-weight: bold;
-    background-color: rgb(245,251,240);
+    background-color: rgb(178, 220, 238);
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
