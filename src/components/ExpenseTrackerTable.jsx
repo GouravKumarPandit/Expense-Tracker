@@ -1,5 +1,14 @@
+import { useState } from "react"
 
-function ExpenseTrackerTable({expenses}) {
+function ExpenseTrackerTable({ expenses, setContextMenu }) {
+    function showContextMenu(event, expense){
+        event.preventDefault();
+        setContextMenu({
+            'clientX' : event.clientX+parseInt(6),
+            'clientY' : event.clientY+parseInt(4),
+            'expense' : expense
+        })
+    }
     
     return (
         <table className="expense-table">
@@ -46,12 +55,16 @@ function ExpenseTrackerTable({expenses}) {
                 </tr>
             </thead>
             <tbody>
-                {expenses.map((expense) => (<tr key={expense.id}>
+                {expenses.length ? expenses.map((expense) => (
+                    <tr key={expense.id} onContextMenu={() => showContextMenu(event, expense)}>
                         <td>{expense.title}</td>
                         <td>{expense.category}</td>
                         <td>₹{expense.amount}</td>
                     </tr>
-                ))}
+                )) : <tr>
+                        <td colSpan={3} className="no-expense-found">No Expense Found</td>
+                    </tr>
+                }
                 <tr className="expense-summary">
                     <th>Total</th>
                     <th></th>
